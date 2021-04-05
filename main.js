@@ -48,7 +48,52 @@ while (count <= gridWidth * gridWidth) {
 
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
+const brushColor = document.querySelectorAll (".palette-color");
+const currentColor = document.querySelector ('.current-brush');
+const canvases = document.querySelector ('.canvas')
 
+for (const brush of brushColor){
+brush.addEventListener ('click', function (){
+   const color = brush.classList [1];
+  currentColor.className = color;
+  console.log (currentColor.className)
+})
+}
+
+const squares = document.querySelectorAll ( '.square');
+for (square of squares)[
+  square.addEventListener ('click', function (){
+  // to write what color is in the brush
+  // get the class name out of the currentBrush class name
+  const brushClasses = currentBrush.className.split (' ')[1];
+  const brushColor = brushClasses[1];
+  square.className = `square ${brushColor}`;
+  })
+]
+
+// click and drag
+ let penDown = false;
+document.addEventListener ('mousedown', function (){
+  penDown = true;
+})
+document.addEventListener ('mouseup', function (){
+penDown = false;
+}) 
+for (const square of squares){
+  square.addEventListener ('mouseenter', function (){
+    if (penDown){
+      const brushClasses = currentBrush.className.split (' ')[1];
+      const brushColor = brushClasses[1];
+      square.className = `square ${brushColor}`;
+    }
+  })
+}
+
+const darkModeButton = document.querySelector ('#dark-mode');
+darkModeButton.addEventListener ('click', function(){
+  const app = document.querySelector ('.app');
+  app.classList.toggle ('dark-mode');
+})
 
 
 /****************************
